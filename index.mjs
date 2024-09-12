@@ -1,5 +1,3 @@
-import dotenv from 'dotenv'
-dotenv.config()
 import Pushbullet from "./lib/Pushbullet.mjs";
 
 export const handler = async (event, context, callback) => {
@@ -15,5 +13,6 @@ export const handler = async (event, context, callback) => {
         SNS.Message
 
     console.log("sending alert: " + pushTitle + ": " + pushBody)
-    await Pushbullet.send_alert(pushTitle, pushBody)
+    const response = await Pushbullet.send_alert(pushTitle, pushBody)
+    console.log(response)
 };
