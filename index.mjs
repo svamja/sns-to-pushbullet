@@ -1,7 +1,7 @@
 import Pushbullet from "./lib/Pushbullet.mjs";
 
 export const handler = async (event, context, callback) => {
-    console.log("event: " + JSON.stringify(event))
+    console.log("event", event)
     const SNS = event.Records[0].Sns
     const pushTitle = SNS.Subject;
     if (typeof SNS.Message === "string") {
@@ -15,5 +15,5 @@ export const handler = async (event, context, callback) => {
 
     console.log("sending alert: " + pushTitle + ": " + pushBody)
     const response = await Pushbullet.send_alert(pushTitle, pushBody)
-    console.log("response: " + JSON.stringify(response))
+    console.log("response", response)
 };
